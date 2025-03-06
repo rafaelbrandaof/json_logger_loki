@@ -1,0 +1,3 @@
+requests
+opentelemetry-api
+pytest>=7.4.4

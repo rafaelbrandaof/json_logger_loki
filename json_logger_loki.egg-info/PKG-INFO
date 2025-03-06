@@ -1,0 +1,9 @@
+Metadata-Version: 2.2
+Name: json_logger_loki
+Version: 0.1.0
+Summary: A JSON logger with OpenTelemetry and Loki support
+Author-email: Rafael Brandao Ferreira <rafaelbrandaof@gmail.com>
+Requires-Python: >=3.7
+Requires-Dist: requests
+Requires-Dist: opentelemetry-api
+Requires-Dist: pytest>=7.4.4
