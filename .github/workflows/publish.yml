@@ -44,7 +44,7 @@ jobs:
 
     - name: Build and Publish to PyPI
       run: |
-        uv run json_logger/setup.py sdist bdist_wheel  # Create distribution files
+        python json_logger/setup.py sdist bdist_wheel  # Create distribution files
         uv run twine upload dist/* -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}  # Upload to PyPI
       env:
         TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
