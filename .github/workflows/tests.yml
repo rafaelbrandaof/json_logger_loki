@@ -37,7 +37,7 @@ jobs:
       run: uv run pytest
 
     - name: Flake 8
-      run : flake8 .
+      run: uv run flake8 .
 
     - name: Pylint
-      run: pylint .
+      run: uv run pylint .
