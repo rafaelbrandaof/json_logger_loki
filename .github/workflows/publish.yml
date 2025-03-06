@@ -1,0 +1,48 @@
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v1.0.0, v1.0.1, etc.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+      with:
+        enable-cache: true
+        cache-dependency-glob: uv.lock
+
+    - name: Set up Python ${{ matrix.python-version }}
+      run: uv python install ${{ matrix.python-version }}
+
+    - name: Install Venv
+      run: uv venv
+
+    - name: Install Dependencies
+      run: |
+        uv pip install -e .
+        uv pip install flake8
+        uv pip install twine  # Twine is used to upload to PyPI
+
+    - name: Test
+      run: uv run pytest
+
+    - name: Flake 8
+      run: uv run flake8 .
+
+    - name: Pylint
+      run: uv run pylint .
+
+    - name: Build and Publish to PyPI
+      run: |
+        python setup.py sdist bdist_wheel  # Create distribution files
+        twine upload dist/* -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}  # Upload to PyPI
+      env:
+        TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
