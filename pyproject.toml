@@ -11,6 +11,8 @@ dependencies = [
     "opentelemetry-api",
     "pytest>=7.4.4",
     "pylint>=2.13.9",
+    "setuptools>=68.0.0",
+    "flake8>=5.0.4",
 ]
 requires-python = ">=3.7"
 
