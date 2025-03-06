@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 
 [project]
 name = "json_logger_loki"
-version = "0.1.0"
+version = "0.2.0"
 description = "A JSON logger with OpenTelemetry and Loki support"
 authors = [{ name = "Rafael Brandao Ferreira", email = "rafaelbrandaof@gmail.com" }]
 dependencies = [
