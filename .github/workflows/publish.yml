@@ -42,6 +42,7 @@ jobs:
 
     - name: Build and Publish to PyPI
       run: |
+        cd json_logger
         python setup.py sdist bdist_wheel  # Create distribution files
         twine upload dist/* -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}  # Upload to PyPI
       env:
