@@ -19,12 +19,12 @@ def logger():
     return JSONLogger(log_file=LOG_FILE)
 
 
-def test_log_info(json_logger):
+def test_log_info(logger):  # pylint: disable=W0621
     """
     Test logging functionality for the 'info' level, ensuring the log entry is written
     correctly with the expected fields in the log file.
     """
-    logger_instance = json_logger
+    logger_instance = logger
     logger_instance.info("Test info log", module="test")
 
     with open(LOG_FILE, "r", encoding="utf-8") as f:

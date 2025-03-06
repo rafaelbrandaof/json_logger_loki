@@ -10,6 +10,7 @@ dependencies = [
     "requests",
     "opentelemetry-api",
     "pytest>=7.4.4",
+    "pylint>=2.13.9",
 ]
 requires-python = ">=3.7"
 
